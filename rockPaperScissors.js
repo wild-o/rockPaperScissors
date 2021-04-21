@@ -3,10 +3,16 @@ function computerPlay(){
     const textArray = ['Rock', 'Paper', 'Scissors'];
     const randomNumber = Math.floor(Math.random() * textArray.length);
 
-    console.log(textArray[randomNumber]);
+    return (randomNumber);
 }
 
-function playRound(playerSelection, computerSelections){
-    const selection = window.prompt("Make your choice: ");
-    console.log(selection);
+function playRound(playerSelection, computerSelection){
+    playerSelection = window.prompt("Rock, Paper, or Scissors: ");
+    computerSelection = computerPlay();
+    
+    if(playerSelection.toLowerCase() == 'rock' && computerSelection == 2){
+        console.log('You win!')
+    }else{
+        console.log('You lose...')
+    }
 }
