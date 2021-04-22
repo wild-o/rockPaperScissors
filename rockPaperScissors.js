@@ -11,7 +11,13 @@ function playRound(playerSelection, computerSelection){
     computerSelection = computerPlay();
     
     if(playerSelection.toLowerCase() == 'rock' && computerSelection == 2){
-        console.log('You win!')
+        console.log('You win! Rock beats Scissors!')}
+    
+    else if(playerSelection.toLowerCase() == 'paper' && computerSelection == 0){
+        console.log('You win! Paper beats Rock!')
+    }
+    else if(playerSelection.toLowerCase() == 'scissors' && computerSelection == 1){
+        console.log('You win! Scissors beats Paper!')
     }else{
         console.log('You lose...')
     }
