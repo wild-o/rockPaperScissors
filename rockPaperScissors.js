@@ -9,16 +9,23 @@ function computerPlay(){
 function playRound(playerSelection, computerSelection){
     playerSelection = window.prompt("Rock, Paper, or Scissors: ");
     computerSelection = computerPlay();
+
     
     if(playerSelection.toLowerCase() == 'rock' && computerSelection == 2){
-        console.log('You win! Rock beats Scissors!')}
+        const rock = console.log('You win! Rock beats Scissors!');
+        return rock;
+    }
     
     else if(playerSelection.toLowerCase() == 'paper' && computerSelection == 0){
-        console.log('You win! Paper beats Rock!')
+        const paper = console.log('You win! Paper beats Rock!');
+        return paper;
     }
     else if(playerSelection.toLowerCase() == 'scissors' && computerSelection == 1){
-        console.log('You win! Scissors beats Paper!')
+        const scissors = console.log('You win! Scissors beats Paper!');
+        return scissors;
+    
     }else{
-        console.log('You lose...')
+        const loss = console.log('You lose...');
+        return loss;
     }
 }
