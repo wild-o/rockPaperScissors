@@ -1,3 +1,13 @@
+const buttons = document.querySelectorAll('button');
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+    alert("Hello");
+  });
+});
+
+
 
 function game(){
     playRound();
@@ -18,9 +28,9 @@ function playRound(playerSelection, computerSelection){
     let playerCount = 0;
     let computerCount = 0;
 
-    for(let i = 0; i < 5; i++){
-        playerSelection = window.prompt("Rock, Paper, or Scissors: ");
-        computerSelection = computerPlay();
+    
+    playerSelection = window.prompt("Rock, Paper, or Scissors: ");
+    computerSelection = computerPlay();
    
     if(playerSelection.toLowerCase() == 'rock' && computerSelection == 2){
         playerCount++;
@@ -39,10 +49,10 @@ function playRound(playerSelection, computerSelection){
         computerCount++;
         const loss = console.log('You lose...' + '\n CPU score: ' + computerCount + ' Player score: ' + playerCount);
         
-    }
-  }
+        }
+  
         console.log('Results: ' + '\nYou: ' + playerCount + '\nComputer: ' + computerCount);
-}
+    }
 
   function test(playerSelection, computerSelection){
 
@@ -64,7 +74,4 @@ function playRound(playerSelection, computerSelection){
         }
     }
     
-}
-
-
-
+  }
