@@ -3,11 +3,9 @@ const buttons = document.querySelectorAll('button');
 // we use the .forEach method to iterate through each button
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-    alert("Hello");
+    game();
   });
 });
-
-
 
 function game(){
     playRound();
@@ -29,29 +27,37 @@ function playRound(playerSelection, computerSelection){
     let computerCount = 0;
 
     
-    playerSelection = window.prompt("Rock, Paper, or Scissors: ");
+    //playerSelection = window.prompt("Rock, Paper, or Scissors: ");
     computerSelection = computerPlay();
+    for(let i = 0; i < 5; i++){
    
-    if(playerSelection.toLowerCase() == 'rock' && computerSelection == 2){
+    if(document.getElementById('1').clicked == true && computerSelection == 2){
         playerCount++;
         const rock = console.log('You win! Rock beats Scissors!' + '\n score: ' + playerCount + ' Computer count: ' + computerCount);
+        break; 
     }
     
-    else if(playerSelection.toLowerCase() == 'paper' && computerSelection == 0){
+    else if(document.getElementById('2').clicked == true && computerSelection == 0){
         playerCount++;
         const paper = console.log('You win! Paper beats Rock!' + '\n score: ' + playerCount + ' CPU score: ' + computerCount);
     }
     
-    else if(playerSelection.toLowerCase() == 'scissors' && computerSelection == 1){
+    else if(document.getElementById('3').clicked == true && computerSelection == 1){
         playerCount++
         const scissors = console.log('You win! Scissors beats Paper!' + '\n score: ' + playerCount + ' CPU score: ' + computerCount);
     }else{
         computerCount++;
         const loss = console.log('You lose...' + '\n CPU score: ' + computerCount + ' Player score: ' + playerCount);
         
-        }
-  
-        console.log('Results: ' + '\nYou: ' + playerCount + '\nComputer: ' + computerCount);
+    }
+
+
+
+        const result = document.querySelector('.result')
+        
+        result.append('Results: ' + '\nYou: ' + playerCount + '\nComputer: ' + computerCount);
+        
+        
     }
 
   function test(playerSelection, computerSelection){
@@ -75,3 +81,4 @@ function playRound(playerSelection, computerSelection){
     }
     
   }
+}
