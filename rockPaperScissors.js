@@ -1,84 +1,72 @@
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll("button");
 
 // we use the .forEach method to iterate through each button
 buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-    game();
+  button.addEventListener("click", () => {
+    playRound();
   });
 });
 
-function game(){
-    playRound();
+
+function computerPlay() {
+  const textArray = ["Rock", "Paper", "Scissors"];
+  const randomNumber = Math.floor(Math.random() * textArray.length);
+
+  return randomNumber;
 }
 
-function computerPlay(){
-    const textArray = ['Rock', 'Paper', 'Scissors'];
-    const randomNumber = Math.floor(Math.random() * textArray.length);
+function checkButton() {
 
-    return (randomNumber);
-}
+  const outcome = computerPlay();
 
-function playRound(playerSelection, computerSelection){
-    
-
-    //Make another function to test one of these if statements to see if you can get the while loop or for loop to work
-    
-    let playerCount = 0;
-    let computerCount = 0;
-
-    
-    //playerSelection = window.prompt("Rock, Paper, or Scissors: ");
-    computerSelection = computerPlay();
-    for(let i = 0; i < 5; i++){
-   
-    if(document.getElementById('1').clicked == true && computerSelection == 2){
-        playerCount++;
-        const rock = console.log('You win! Rock beats Scissors!' + '\n score: ' + playerCount + ' Computer count: ' + computerCount);
-        break; 
-    }
-    
-    else if(document.getElementById('2').clicked == true && computerSelection == 0){
-        playerCount++;
-        const paper = console.log('You win! Paper beats Rock!' + '\n score: ' + playerCount + ' CPU score: ' + computerCount);
-    }
-    
-    else if(document.getElementById('3').clicked == true && computerSelection == 1){
-        playerCount++
-        const scissors = console.log('You win! Scissors beats Paper!' + '\n score: ' + playerCount + ' CPU score: ' + computerCount);
-    }else{
-        computerCount++;
-        const loss = console.log('You lose...' + '\n CPU score: ' + computerCount + ' Player score: ' + playerCount);
-        
-    }
-
-
-
-        const result = document.querySelector('.result')
-        
-        result.append('Results: ' + '\nYou: ' + playerCount + '\nComputer: ' + computerCount);
-        
-        
-    }
-
-  function test(playerSelection, computerSelection){
-
-    let playerCount = 0;
-    let computerCount = 0;
-
-    for(let i = 0; i < 5; i++){
-        playerSelection = window.prompt("Rock, Paper, or Scissors: ");
-        computerSelection = computerPlay();
-
-        if(playerSelection.toLowerCase() == 'rock' && computerSelection == 2){
-            playerCount++;
-            const rock = console.log('You win! Rock beats Scissors!' + '\n score: ' + playerCount + ' Computer count: ' + computerCount);
-        }
-        else{
-        computerCount++;
-        const loss = console.log('You lose...' + '\n CPU score: ' + computerCount + ' Player score: ' + playerCount);
-        
-        }
-    }
-    
+  if (document.getElementById('1').onclick && outcome == 2) {
+    //Rock beats Scissors - Human Victory
+    return true;
+  } else if (
+    document.getElementById('2').onclick &&
+    outcome == 0
+  ) {
+    //Paper beats Rock - Human Victory
+    return true;
+  } else if (
+    document.getElementById('3').onclick &&
+    outcome == 1
+  ) {
+    //Scissors beats Rock - Human Victory
+    return true;
+  } else {
+    // CPU Victory
+    return false;
   }
 }
+
+function playRound() {
+
+
+  let playerScore = 0;
+  let computerScore = 0;
+
+  computerPlay();
+  
+  if (checkButton === true) {
+    playerScore += 1;
+  } else {
+    computerScore += 1;
+  }
+    newContent(playerScore, computerScore);
+}
+
+
+
+function newContent(s1, s2){
+  const el = document.getElementById("MyDiv");
+        while (el.firstChild) {
+        el.removeChild(el.firstChild);
+}
+const result = document.getElementById("MyDiv");
+    
+    result.textContent = " Player: " + s1 + " CPU : " + s2;
+
+    MyDiv.append(result);
+}
+
