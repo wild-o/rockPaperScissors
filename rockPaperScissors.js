@@ -3,7 +3,7 @@ const buttons = document.querySelectorAll("button");
 // we use the .forEach method to iterate through each button
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    playRound();
+    checkButton();
   });
 });
 
@@ -15,31 +15,13 @@ function computerPlay() {
   return randomNumber;
 }
 
-function checkButton() {
-
-  const outcome = computerPlay();
-
-  if (document.getElementById('1').onclick && outcome == 2) {
-    //Rock beats Scissors - Human Victory
-    return true;
-  } else if (
-    document.getElementById('2').onclick &&
-    outcome == 0
-  ) {
-    //Paper beats Rock - Human Victory
-    return true;
-  } else if (
-    document.getElementById('3').onclick &&
-    outcome == 1
-  ) {
-    //Scissors beats Rock - Human Victory
-    return true;
-  } else {
-    // CPU Victory
-    return false;
-  }
+function checkButton(){
+  document.getElementById('1').addEventListener("click", () => {
+    alert('You picked Rock!');
+  });
 }
 
+  
 function playRound() {
 
 
@@ -70,3 +52,7 @@ const result = document.getElementById("MyDiv");
     MyDiv.append(result);
 }
 
+//one function to get the player choice 
+//one function to get the random CPU choice 
+//one function to compare the choices
+//one function to update the display with the new points
