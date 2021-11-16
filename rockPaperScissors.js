@@ -1,70 +1,77 @@
+const buttons = document.querySelectorAll("button");
 
-function game(){
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
     playRound();
+    });
+});
+
+
+function playRound() {
+  
+  let playerScore = 0;
+  let computerScore = 0;
+
+  const finalResult = checkButton();
+
+  if (finalResult === true) { 
+    playerScore += 1;
+  } else {
+    computerScore += 1;
+  }
+    newContent(playerScore, computerScore);
 }
 
-function computerPlay(){
-    const textArray = ['Rock', 'Paper', 'Scissors'];
-    const randomNumber = Math.floor(Math.random() * textArray.length);
+function checkButton(){
 
-    return (randomNumber);
-}
-
-function playRound(playerSelection, computerSelection){
-    
-
-    //Make another function to test one of these if statements to see if you can get the while loop or for loop to work
-    
-    let playerCount = 0;
-    let computerCount = 0;
-
-    for(let i = 0; i < 5; i++){
-        playerSelection = window.prompt("Rock, Paper, or Scissors: ");
-        computerSelection = computerPlay();
-   
-    if(playerSelection.toLowerCase() == 'rock' && computerSelection == 2){
-        playerCount++;
-        const rock = console.log('You win! Rock beats Scissors!' + '\n score: ' + playerCount + ' Computer count: ' + computerCount);
+  const result = allCases();
+  const CPU = computerPlay();
+  
+  if(result == 0 && CPU == 2){
+      return true; 
     }
-    
-    else if(playerSelection.toLowerCase() == 'paper' && computerSelection == 0){
-        playerCount++;
-        const paper = console.log('You win! Paper beats Rock!' + '\n score: ' + playerCount + ' CPU score: ' + computerCount);
-    }
-    
-    else if(playerSelection.toLowerCase() == 'scissors' && computerSelection == 1){
-        playerCount++
-        const scissors = console.log('You win! Scissors beats Paper!' + '\n score: ' + playerCount + ' CPU score: ' + computerCount);
+    else if(result == 1 && CPU == 0){
+      return true; 
+    }else if(result == 2 && CPU == 1){
+      return true; 
     }else{
-        computerCount++;
-        const loss = console.log('You lose...' + '\n CPU score: ' + computerCount + ' Player score: ' + playerCount);
-        
+      return false; 
     }
   }
-        console.log('Results: ' + '\nYou: ' + playerCount + '\nComputer: ' + computerCount);
-}
 
-  function test(playerSelection, computerSelection){
-
-    let playerCount = 0;
-    let computerCount = 0;
-
-    for(let i = 0; i < 5; i++){
-        playerSelection = window.prompt("Rock, Paper, or Scissors: ");
-        computerSelection = computerPlay();
-
-        if(playerSelection.toLowerCase() == 'rock' && computerSelection == 2){
-            playerCount++;
-            const rock = console.log('You win! Rock beats Scissors!' + '\n score: ' + playerCount + ' Computer count: ' + computerCount);
-        }
-        else{
-        computerCount++;
-        const loss = console.log('You lose...' + '\n CPU score: ' + computerCount + ' Player score: ' + playerCount);
-        
-        }
-    }
+function allCases(){
+    let clicked = 0;
     
+    document.getElementById('1').addEventListener("click", function() {
+      clicked = 1; 
+    });
+    
+    return clicked; 
+    
+
 }
 
+function computerPlay() {
+  const textArray = ["Rock", "Paper", "Scissors"];
+  const randomNumber = Math.floor(Math.random() * textArray.length);
 
+  return randomNumber;
+}
 
+function newContent(s1, s2){
+  const el = document.getElementById("MyDiv");
+        while (el.firstChild) {
+        el.removeChild(el.firstChild);
+}
+const result = document.getElementById("MyDiv");
+    
+    result.textContent = " Player: " + s1 + " CPU : " + s2;
+
+    MyDiv.append(result);
+}
+
+//one function to get the player choice 
+//one function to get the random CPU choice 
+//one function to compare the choices
+//one function to update the display with the new points
